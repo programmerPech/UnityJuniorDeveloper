@@ -6,9 +6,15 @@ namespace Shop
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Вы пришли в магазин. Сколько золота у вас в кармане?");
+            Console.Write("Привет, странник! Добро пожаловать в мой магазин кристаллов. Сколько золота у тебя есть? ");
             int goldCount = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Привет, странник! Добро пожаловать в мой магазин.");
+            int crystalPrice = 10;
+            int maxCrystalCount = goldCount / crystalPrice;
+            Console.Write($"Ты можешь купить {maxCrystalCount} кристаллов. Сколько кристалов желаешь приобрести? ");
+            int crystalCount = Convert.ToInt32(Console.ReadLine());
+            int goldLeft = goldCount - crystalCount * crystalPrice;
+            Console.WriteLine($"После покупки у тебя появилось {crystalCount} кристаллов и осталось {goldLeft} золота."); 
+            
         }
     }
 }

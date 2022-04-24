@@ -8,7 +8,6 @@ namespace SwapYourName
         {
             string firstName = "Doe";
             string surname = "John";
-
             string fullName = firstName + " " + surname;
 
             Console.WriteLine($"Имя и фамилия до перестановки - {fullName}.");

@@ -12,8 +12,8 @@ namespace Shop
             int maxCrystalCount = goldCount / crystalPrice;
             Console.Write($"Ты можешь купить {maxCrystalCount} кристаллов. Сколько кристалов желаешь приобрести? ");
             int crystalCount = Convert.ToInt32(Console.ReadLine());
-            int goldLeft = goldCount - crystalCount * crystalPrice;
-            Console.WriteLine($"После покупки у тебя появилось {crystalCount} кристаллов и осталось {goldLeft} золота."); 
+            goldCount -= crystalCount * crystalPrice;
+            Console.WriteLine($"После покупки у тебя появилось {crystalCount} кристаллов и осталось {goldCount} золота."); 
             
         }
     }

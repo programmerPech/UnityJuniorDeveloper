@@ -10,8 +10,9 @@ namespace Clinic
             int grannyCount = Convert.ToInt32(Console.ReadLine());
             int receptionTime = 10;
             int waitingTime = grannyCount * receptionTime;
-            int waitingHours = waitingTime / 60;
-            int waitingMinutes = waitingTime % 60;
+            int minutesInHour = 60;
+            int waitingHours = waitingTime / minutesInHour;
+            int waitingMinutes = waitingTime % minutesInHour;
             Console.WriteLine($"Перед вами в очереди {grannyCount} бабушек, время ожидания составляет {waitingHours} часа(ов) и {waitingMinutes} минут.");
         }
     }

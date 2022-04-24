@@ -16,7 +16,6 @@ namespace Variables
             char symbolU = 'U';
             string petName = "Sharik";
             bool isValid = true;
-
         }
     }
 }

@@ -6,7 +6,13 @@ namespace ExitControl
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            string userInput="";
+            
+            while (userInput != "exit")
+            {
+                Console.Write("Введите слово:");
+                userInput = Console.ReadLine();
+            }
         }
     }
 }

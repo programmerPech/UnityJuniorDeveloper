@@ -13,7 +13,7 @@ namespace OutputMessageNTimes
             Console.Write("Введите количество повторов вашего сообщения: ");
             timesCount = Convert.ToInt32(Console.ReadLine());
 
-            while (timesCount-- > 0)
+            for(int i = 0; i < timesCount; i++)
             {
                 Console.WriteLine(userMessage);
             }

@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32413.511
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExitControl", "ExitControl.csproj", "{0768756D-AB80-46AC-8ED4-AE85F7D3DFCD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0768756D-AB80-46AC-8ED4-AE85F7D3DFCD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0768756D-AB80-46AC-8ED4-AE85F7D3DFCD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0768756D-AB80-46AC-8ED4-AE85F7D3DFCD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0768756D-AB80-46AC-8ED4-AE85F7D3DFCD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E0677D36-1ECD-44E0-B8A7-3481F69FCE8A}
+	EndGlobalSection
+EndGlobal

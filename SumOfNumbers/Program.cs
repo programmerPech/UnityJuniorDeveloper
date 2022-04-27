@@ -12,16 +12,16 @@ namespace SumOfNumbers
             int number = random.Next(beginRandom, endRandom);
             Console.WriteLine($"Рандомное число number = {number}");
             int sumOfNumbers=0;
-            int numberThree = 3;
-            int numberFive = 5;
+            int multipleNumber1 = 3;
+            int multipleNumber2 = 5;
 
             for(int i= 0; i<=number; i++)
             {
-                if (i % numberThree == 0 || i % numberFive == 0)
+                if (i % multipleNumber1 == 0 || i % multipleNumber2 == 0)
                     sumOfNumbers += i;
             }
 
-            Console.WriteLine("Cумма всех положительных чисел меньше number (включая число), которые кратные 3 или 5 равна "+sumOfNumbers);
+            Console.WriteLine($"Cумма всех положительных чисел меньше number (включая число), которые кратные {multipleNumber1} или {multipleNumber2} равна {sumOfNumbers}");
         }
     }
 }

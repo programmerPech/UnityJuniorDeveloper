@@ -6,16 +6,18 @@ namespace SumOfNumbers
     {
         static void Main(string[] args)
         {
-            Random rand = new Random();
+            Random random = new Random();
             int beginRandom = 0;
             int endRandom = 100;
-            int number = rand.Next(beginRandom, endRandom);
+            int number = random.Next(beginRandom, endRandom);
             Console.WriteLine($"Рандомное число number = {number}");
             int sumOfNumbers=0;
+            int numberThree = 3;
+            int numberFive = 5;
 
             for(int i= 0; i<=number; i++)
             {
-                if (i % 3 == 0 || i % 5 == 0)
+                if (i % numberThree == 0 || i % numberFive == 0)
                     sumOfNumbers += i;
             }
 

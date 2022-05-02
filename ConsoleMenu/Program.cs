@@ -8,6 +8,8 @@ namespace ConsoleMenu
         {
             string userName = "";
             string userInput = "";
+            int beginRandomNumberRange = 0;
+            int endRandomNumberRange = 101;
 
             while (userInput != "Exit")
             {
@@ -55,7 +57,7 @@ namespace ConsoleMenu
                         break;
                     case "RandomNumber":
                         Random random = new Random();
-                        int randomNum = random.Next(0, 101);
+                        int randomNum = random.Next(beginRandomNumberRange, endRandomNumberRange);
                         Console.WriteLine($"Ваше случайное число - {randomNum}");
                         Console.WriteLine("Для выхода в главное меню нажмите любую клавишу.\n");
                         Console.ReadKey();

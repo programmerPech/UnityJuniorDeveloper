@@ -57,8 +57,8 @@ namespace ConsoleMenu
                         break;
                     case "RandomNumber":
                         Random random = new Random();
-                        int randomNum = random.Next(beginRandomNumberRange, endRandomNumberRange);
-                        Console.WriteLine($"Ваше случайное число - {randomNum}");
+                        int randomNumber = random.Next(beginRandomNumberRange, endRandomNumberRange);
+                        Console.WriteLine($"Ваше случайное число - {randomNumber}");
                         Console.WriteLine("Для выхода в главное меню нажмите любую клавишу.\n");
                         Console.ReadKey();
                         Console.Write("\b\b");

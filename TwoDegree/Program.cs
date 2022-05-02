@@ -11,16 +11,17 @@ namespace TwoDegree
             Random random = new Random();
             int randomNumber = random.Next(beginRandom, endRandom);
             Console.WriteLine("Заданное случайное число: " + randomNumber);
-            int twoDegree = 1;
+            int baseNumber = 2;
+            int numberDegree = 1;
             int degree = 0;
 
-            while (randomNumber >= twoDegree)
+            while (randomNumber >= numberDegree)
             {
-                twoDegree *= 2;
+                numberDegree *= baseNumber;
                 degree++;
             }
 
-            Console.WriteLine($"заданное число {randomNumber}, степень {degree}, число в степени 2 {twoDegree}");
+            Console.WriteLine($"заданное число {randomNumber}, степень {degree}, число {baseNumber} в степени {degree} равняется {numberDegree}");
         }
     }
 }

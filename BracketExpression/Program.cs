@@ -24,7 +24,7 @@ namespace BracketExpression
                         maxDeepBracket = currentDeepBracket;
                     }
                 }
-                else if(userBracketExpression[i] == bracketSymbolClose && currentDeepBracket == 0)
+                else if(userBracketExpression[i] == bracketSymbolClose && currentDeepBracket > 0 )
                 {
                     currentDeepBracket--;
                 }

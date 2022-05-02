@@ -15,7 +15,6 @@ namespace BracketExpression
 
             for(int i = 0; i < userBracketExpression.Length; i++)
             {
-
                 if(userBracketExpression[i]== bracketSymbolOpen)
                 {
                     currentDeepBracket++;
@@ -25,7 +24,7 @@ namespace BracketExpression
                         maxDeepBracket = currentDeepBracket;
                     }
                 }
-                else if(userBracketExpression[i] == bracketSymbolClose)
+                else if(userBracketExpression[i] == bracketSymbolClose && currentDeepBracket == 0)
                 {
                     currentDeepBracket--;
                 }

@@ -22,6 +22,7 @@ namespace MultipleNumbers
                 for (int index = beginThreeDigit; index < endThreeDigit; index++)
                 {
                     currentIndex = index;
+
                     while (currentIndex >= 0)
                     {
 
@@ -31,6 +32,7 @@ namespace MultipleNumbers
                             countNumber++;
                             break;
                         }
+
                         currentIndex -= numberN;
                     }
                 }

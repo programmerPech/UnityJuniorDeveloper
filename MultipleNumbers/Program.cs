@@ -9,8 +9,8 @@ namespace MultipleNumbers
             int beginNumberN = 1;
             int endNumberN = 27;
             int currentIndex = 0;
-            int beginThreeDigit = 100;
-            int endThreeDigit = 999;
+            int beginNumberRange = 100;
+            int endNumberRange = 999;
             int firstMultipleNumber=0;
             int countNumber = 0;
             Console.WriteLine("Введите N");
@@ -19,7 +19,7 @@ namespace MultipleNumbers
             if (beginNumberN <= numberN && numberN <= endNumberN)
             {
 
-                for (int index = beginThreeDigit; index < endThreeDigit; index++)
+                for (int index = beginNumberRange; index < endNumberRange; index++)
                 {
                     currentIndex = index;
 
@@ -37,7 +37,7 @@ namespace MultipleNumbers
                     }
                 }
 
-                while (firstMultipleNumber + numberN <= endThreeDigit)
+                while (firstMultipleNumber + numberN <= endNumberRange)
                 {
                     countNumber++;
                     firstMultipleNumber = firstMultipleNumber + numberN;
@@ -45,7 +45,10 @@ namespace MultipleNumbers
 
                 Console.WriteLine($"Количество трехзначных чисел кратных {numberN} равняется {countNumber}. ");
             }
-            else Console.WriteLine("Число N должно быть от 1 до 27.");
+            else 
+            { 
+                Console.WriteLine($"Число N должно быть от {beginNumberN} до {endNumberN}."); 
+            }
         }
     }
 }

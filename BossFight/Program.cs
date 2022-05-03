@@ -42,6 +42,7 @@ namespace BossFight
                         break;
                     case "2":
                         usedDimensionalRift = false;
+
                         if (spiritIsAlive == true)
                         {
                             healthBoss -= 100;
@@ -50,15 +51,19 @@ namespace BossFight
                         {
                             Console.WriteLine("У вас не призван теневой дух, используйте первое заклинание Рашамон.");
                         }
+
                         break;
                     case "3":
                         usedDimensionalRift = true;
                         healthMage += 250;
+
                         if (healthMage > maxHealthMage)
                             healthMage = maxHealthMage;
+
                         break;
                     case "4":
                         usedDimensionalRift = false;
+
                         if (healthMage < needHealthPercentForLastDance/maxPercent * maxHealthMage)
                         {
                             fireballCount = random.Next(minFireballCount, maxFireballCount);
@@ -70,6 +75,7 @@ namespace BossFight
                         {
                             Console.WriteLine($"Вы не можете использовать заклинание. У вас должно быть меньше {needHealthPercentForLastDance}% от максимального уровня здоровья. Недостаточно низкий уровень здоровья.");
                         }
+
                         break;
                     default:
                         usedDimensionalRift = false;
@@ -81,6 +87,7 @@ namespace BossFight
                 {
                     healthMage -= damageBoss;
                 }
+
                 Console.WriteLine("Итоги раунда: ваше хп равняется " + healthMage + " здоровье босса " + healthBoss);
             }
 

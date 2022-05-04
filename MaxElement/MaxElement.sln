@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32413.511
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaxElement", "MaxElement.csproj", "{139F96AF-6370-42C5-817B-AB94C04906A5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{139F96AF-6370-42C5-817B-AB94C04906A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{139F96AF-6370-42C5-817B-AB94C04906A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{139F96AF-6370-42C5-817B-AB94C04906A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{139F96AF-6370-42C5-817B-AB94C04906A5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {631BB2EE-AA1D-4BE5-8F7B-D8A4A984B691}
+	EndGlobalSection
+EndGlobal

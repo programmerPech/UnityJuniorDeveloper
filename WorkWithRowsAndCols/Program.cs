@@ -19,25 +19,25 @@ namespace WorkWithRowsAndCols
 
             Console.WriteLine("Исходная матрица:");
 
-            for(int i=0; i<twoDimensionalArray.GetLength(0); i++)
+            for (int i = 0; i < twoDimensionalArray.GetLength(0); i++)
             {
-                for(int j=0;j<twoDimensionalArray.GetLength(1); j++)
+                for (int j = 0; j < twoDimensionalArray.GetLength(1); j++)
                 {
                     twoDimensionalArray[i, j] = random.Next(beginRandomRange, endRandomRange);
                     Console.Write(twoDimensionalArray[i, j] + " ");
-
-                    if (i == rowNumber-1)
-                    {
-                        resultSumRow += twoDimensionalArray[i, j];
-                    }
-
-                    if (j == colummNumber-1)
-                    {
-                        resultProductColumn *= twoDimensionalArray[i, j];
-                    }
                 }
 
                 Console.WriteLine();
+            }
+
+            for (int j = 0; j < twoDimensionalArray.GetLength(1); j++)
+            {
+                resultSumRow += twoDimensionalArray[rowNumber-1, j];
+            }
+
+            for(int i=0;i<twoDimensionalArray.GetLength(0); i++)
+            {
+                resultProductColumn *= twoDimensionalArray[i, colummNumber-1];
             }
 
             Console.WriteLine($"Сумма {rowNumber} строки равна {resultSumRow}.");

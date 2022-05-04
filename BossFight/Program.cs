@@ -22,6 +22,7 @@ namespace BossFight
             int maxFireballCount = 4;
             int oneFireballDamage = 200;
             int fireballsDamage = 0;
+
             Console.WriteLine("Здравствуй, теневой маг! Перед тобой стоит босс, ты должен его уничтожить!");
             Console.WriteLine("У тебя есть 4 заклинания:\n1. Рашамон-призывает теневого духа и отнимает вам 100хп.");
             Console.WriteLine("2. Хуганзакура (Может быть выполнен только после призыва теневого духа), наносит 100 ед. урона.");

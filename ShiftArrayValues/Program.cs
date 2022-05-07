@@ -6,8 +6,7 @@ namespace ShiftArrayValues
     {
         static void Main(string[] args)
         {
-            int elementCount = 10;
-            int[] oneDimensionalArray = new int[elementCount];
+            int[] oneDimensionalArray = new int[10];
             Random random = new Random();
             int beginRandomRange = 1;
             int endRandomRange = 10;
@@ -28,12 +27,12 @@ namespace ShiftArrayValues
             {
                 int firstElement = oneDimensionalArray[0];
 
-                for (int j = 1; j < elementCount; j++)
+                for (int j = 1; j < oneDimensionalArray.Length; j++)
                 {
                     oneDimensionalArray[j - 1] = oneDimensionalArray[j];
                 }
 
-                oneDimensionalArray[elementCount - 1] = firstElement;
+                oneDimensionalArray[oneDimensionalArray.Length - 1] = firstElement;
             }
 
             Console.WriteLine("Сдвинутый массив:");

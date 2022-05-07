@@ -6,8 +6,7 @@ namespace SortArray
     {
         static void Main(string[] args)
         {
-            int elementCount = 10;
-            int[] oneDimensionalArray = new int[elementCount];
+            int[] oneDimensionalArray = new int[10];
             Random random = new Random();
             int beginRandomRange = 0;
             int endRandomRange = 10;

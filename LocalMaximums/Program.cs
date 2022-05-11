@@ -6,7 +6,7 @@ namespace LocalMaximums
     {
         static void Main(string[] args)
         {
-            int elementsCount = 10;
+            int elementsCount = 3;
             int[] oneDimensionalArray = new int[elementsCount];
             Random random = new Random();
             int beginRandomRange = 0;

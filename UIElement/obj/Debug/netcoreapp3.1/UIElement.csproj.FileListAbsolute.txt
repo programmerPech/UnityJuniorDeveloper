@@ -1,0 +1,14 @@
+C:\Users\Beoning\source\repos\UnityJuniorDeveloper\UIElement\bin\Debug\netcoreapp3.1\UIElement.exe
+C:\Users\Beoning\source\repos\UnityJuniorDeveloper\UIElement\bin\Debug\netcoreapp3.1\UIElement.deps.json
+C:\Users\Beoning\source\repos\UnityJuniorDeveloper\UIElement\bin\Debug\netcoreapp3.1\UIElement.runtimeconfig.json
+C:\Users\Beoning\source\repos\UnityJuniorDeveloper\UIElement\bin\Debug\netcoreapp3.1\UIElement.runtimeconfig.dev.json
+C:\Users\Beoning\source\repos\UnityJuniorDeveloper\UIElement\bin\Debug\netcoreapp3.1\UIElement.dll
+C:\Users\Beoning\source\repos\UnityJuniorDeveloper\UIElement\bin\Debug\netcoreapp3.1\UIElement.pdb
+C:\Users\Beoning\source\repos\UnityJuniorDeveloper\UIElement\obj\Debug\netcoreapp3.1\UIElement.csproj.AssemblyReference.cache
+C:\Users\Beoning\source\repos\UnityJuniorDeveloper\UIElement\obj\Debug\netcoreapp3.1\UIElement.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Beoning\source\repos\UnityJuniorDeveloper\UIElement\obj\Debug\netcoreapp3.1\UIElement.AssemblyInfoInputs.cache
+C:\Users\Beoning\source\repos\UnityJuniorDeveloper\UIElement\obj\Debug\netcoreapp3.1\UIElement.AssemblyInfo.cs
+C:\Users\Beoning\source\repos\UnityJuniorDeveloper\UIElement\obj\Debug\netcoreapp3.1\UIElement.csproj.CoreCompileInputs.cache
+C:\Users\Beoning\source\repos\UnityJuniorDeveloper\UIElement\obj\Debug\netcoreapp3.1\UIElement.dll
+C:\Users\Beoning\source\repos\UnityJuniorDeveloper\UIElement\obj\Debug\netcoreapp3.1\UIElement.pdb
+C:\Users\Beoning\source\repos\UnityJuniorDeveloper\UIElement\obj\Debug\netcoreapp3.1\UIElement.genruntimeconfig.cache

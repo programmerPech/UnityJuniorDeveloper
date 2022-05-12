@@ -7,8 +7,8 @@ namespace ReadInt
         static void Main(string[] args)
         {
             Console.WriteLine("Введите число:");
-            string inputNumber = Console.ReadLine();
-            inputNumber = RequestNumber(inputNumber).ToString();
+            int inputNumber;
+            inputNumber = RequestNumber(Console.ReadLine());
             Console.WriteLine("Вы ввели число " + inputNumber);
         }
 
@@ -17,12 +17,9 @@ namespace ReadInt
             int parseResult;
 
             while (int.TryParse(number, out parseResult) != true)
-            {
-                if (int.TryParse(number, out parseResult) != true)
-                {
-                    Console.WriteLine("Ошибка! Ожидалось целое число.\nВведите число: ");
-                    number = Console.ReadLine();
-                }   
+            { 
+                Console.WriteLine("Ошибка! Ожидалось целое число.\nВведите число: ");
+                number = Console.ReadLine();
             }
 
             return parseResult;

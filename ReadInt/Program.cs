@@ -8,11 +8,11 @@ namespace ReadInt
         {
             Console.WriteLine("Введите число:");
             int inputNumber;
-            inputNumber = RequestNumber(Console.ReadLine());
+            inputNumber = GetNumber(Console.ReadLine());
             Console.WriteLine("Вы ввели число " + inputNumber);
         }
 
-        static int RequestNumber(string number)
+        static int GetNumber(string number)
         {
             int parseResult;
 

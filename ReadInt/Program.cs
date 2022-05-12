@@ -6,24 +6,26 @@ namespace ReadInt
     {
         static void Main(string[] args)
         {
-            RequestNumber();
+            Console.WriteLine("Введите число:");
+            string inputNumber = Console.ReadLine();
+            inputNumber = RequestNumber(inputNumber).ToString();
+            Console.WriteLine("Вы ввели число " + inputNumber);
         }
 
-        static void RequestNumber()
+        static int RequestNumber(string number)
         {
-            string inputNumber = "";
             int parseResult;
 
-            while(int.TryParse(inputNumber, out parseResult) != true)
+            while (int.TryParse(number, out parseResult) != true)
             {
-                Console.WriteLine("Введите число:");
-                inputNumber = Console.ReadLine();
-
-                if(int.TryParse(inputNumber, out parseResult) != true)
-                    Console.WriteLine("Ошибка! Ожидалось целое число.");
+                if (int.TryParse(number, out parseResult) != true)
+                {
+                    Console.WriteLine("Ошибка! Ожидалось целое число.\nВведите число: ");
+                    number = Console.ReadLine();
+                }   
             }
 
-            Console.WriteLine("Вы ввели число "+parseResult);
+            return parseResult;
         }
     }
 }

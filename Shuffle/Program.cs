@@ -6,13 +6,13 @@ namespace Shuffle
     {
         static void Main(string[] args)
         {
-            int[] oneDimensionalArray = new int[10] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+            int[] numbers = new int[10] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
 
             Console.WriteLine("Исходный массив: ");
-            OutputArray(oneDimensionalArray);
-            ShuffleArray(oneDimensionalArray);
+            OutputArray(numbers);
+            Shuffle(numbers);
             Console.WriteLine("\nПеремешанный массив: ");
-            OutputArray(oneDimensionalArray);
+            OutputArray(numbers);
         }
 
         static void OutputArray(int[] array)
@@ -23,7 +23,7 @@ namespace Shuffle
             }
         }
 
-        static void ShuffleArray(int[] array)
+        static void Shuffle(int[] array)
         {
             Random random = new Random();
 
@@ -33,11 +33,11 @@ namespace Shuffle
             }
         }
 
-        static void SwapElements(int[] array, int a, int b)
+        static void SwapElements(int[] array, int firstIndex, int secondIndex)
         {
-            int temporary = array[a];
-            array[a] = array[b];
-            array[b] = temporary;
+            int temporary = array[firstIndex];
+            array[firstIndex] = array[secondIndex];
+            array[secondIndex] = temporary;
         }
     }
 }

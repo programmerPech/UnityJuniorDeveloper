@@ -6,88 +6,100 @@ namespace BraveNewWorld
     {
         static void Main(string[] args)
         {
-            DrawMap();
-        }
-
-        static void DrawMap()
-        {
-            Console.CursorVisible = false;
-
-            char[,] map =
-            {
-                {'#','#','#','#','#','#','#','#','#','#','#','#','#','#','#', },
-                {'#',' ',' ',' ',' ',' ',' ','#',' ',' ',' ',' ',' ',' ','#', },
-                {'#',' ',' ',' ',' ',' ',' ','#',' ',' ',' ',' ',' ',' ','#', },
-                {'#',' ',' ',' ',' ',' ',' ','#',' ',' ',' ',' ',' ',' ','#', },
-                {'#',' ',' ',' ',' ',' ',' ','#',' ',' ',' ',' ',' ',' ','#', },
-                {'#',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','#', },
-                {'#',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','#', },
-                {'#','#','#','#','#',' ',' ',' ',' ',' ','#','#','#','#','#', },
-                {'#',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','#', },
-                {'#',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','#', },
-                {'#',' ',' ',' ',' ',' ',' ','#',' ',' ',' ',' ',' ',' ','#', },
-                {'#',' ',' ',' ',' ',' ',' ','#',' ',' ',' ',' ',' ',' ','#', },
-                {'#',' ',' ',' ',' ',' ',' ','#',' ',' ',' ',' ',' ',' ','#', },
-                {'#',' ',' ',' ',' ',' ',' ','#',' ',' ',' ',' ',' ',' ','#', },
-                {'#','#','#','#','#','#','#','#','#','#','#','#','#','#','#', }
-            };
-
             int userX = 6;
             int userY = 6;
-
-            while (true)
+            int userDX = 0;
+            int userDY = 1;
+            bool isPlaying = true;
+            char[,] map =
             {
-                for (int i = 0; i < map.GetLength(0); i++)
-                {
-                    for (int j = 0; j < map.GetLength(1); j++)
-                    {
-                        Console.Write(map[i,j]);
-                    }
+                { '#','#','#','#','#','#','#','#','#','#','#','#','#','#','#', },
+                { '#',' ',' ',' ',' ',' ',' ','#',' ',' ',' ',' ',' ',' ','#', },
+                { '#',' ',' ',' ',' ',' ',' ','#',' ',' ',' ',' ',' ',' ','#', },
+                { '#',' ',' ',' ',' ',' ',' ','#',' ',' ',' ',' ',' ',' ','#', },
+                { '#',' ',' ',' ',' ',' ',' ','#',' ',' ',' ',' ',' ',' ','#', },
+                { '#',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','#', },
+                { '#',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','#', },
+                { '#','#','#','#','#',' ',' ',' ',' ',' ','#','#','#','#','#', },
+                { '#',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','#', },
+                { '#',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','#', },
+                { '#',' ',' ',' ',' ',' ',' ','#',' ',' ',' ',' ',' ',' ','#', },
+                { '#',' ',' ',' ',' ',' ',' ','#',' ',' ',' ',' ',' ',' ','#', },
+                { '#',' ',' ',' ',' ',' ',' ','#',' ',' ',' ',' ',' ',' ','#', },
+                { '#',' ',' ',' ',' ',' ',' ','#',' ',' ',' ',' ',' ',' ','#', },
+                { '#','#','#','#','#','#','#','#','#','#','#','#','#','#','#', }
+            };
 
-                    Console.WriteLine();
-                }
+            Console.CursorVisible = false;
+            DrawMap(map);
 
+            while (isPlaying)
+            {
                 Console.SetCursorPosition(userY, userX);
                 Console.Write('@');
-                ConsoleKeyInfo charKey = Console.ReadKey();
 
-                switch (charKey.Key)
+                if (Console.KeyAvailable == true)
                 {
-                    case ConsoleKey.UpArrow:
-                    case ConsoleKey.W:
-                        if (map[userX - 1, userY] != '#')
-                        {
-                            userX--;
-                        }
-                        break;
-                    case ConsoleKey.DownArrow:
-                    case ConsoleKey.S:
-                        if (map[userX + 1, userY] != '#')
-                        {
-                            userX++;
-                        }
-                        break;
-                    case ConsoleKey.LeftArrow:
-                    case ConsoleKey.A:
-                        if (map[userX, userY-1] != '#')
-                        {
-                            userY--;
-                        }
-                        break;
-                    case ConsoleKey.RightArrow:
-                    case ConsoleKey.D:
-                        if (map[userX, userY+1] != '#')
-                        {
-                            userY++;
-                        }
-                        break;
+                    ConsoleKeyInfo charKey = Console.ReadKey(true);
+                    ChangeDirection(charKey, ref userDX, ref userDY);
+
+                    if (map[userX + userDX, userY + userDY] != '#')
+                    {
+                        MoveUser(ref userX, ref userY, userDX, userDY);
+                    }
                 }
-                Console.Clear();
             }
+        }
 
-            static void MoveUser()
+        static void ChangeDirection(ConsoleKeyInfo key, ref int DX, ref int DY)
+        {
+            switch (key.Key)
             {
+                case ConsoleKey.UpArrow:
+                case ConsoleKey.W:
+                    DX = -1;
+                    DY = 0;
+                    break;
+                case ConsoleKey.DownArrow:
+                case ConsoleKey.S:
+                    DX = 1;
+                    DY = 0;
+                    break;
+                case ConsoleKey.LeftArrow:
+                case ConsoleKey.A:
+                    DX = 0;
+                    DY = -1;
+                    break;
+                case ConsoleKey.RightArrow:
+                case ConsoleKey.D:
+                    DX = 0;
+                    DY = 1;
+                    break;
+            }
+        }
 
+        static void MoveUser(ref int X, ref int Y, int DX, int DY)
+        {
+            Console.SetCursorPosition(Y, X);
+            Console.Write(" ");
+
+            X += DX;
+            Y += DY;
+
+            Console.SetCursorPosition(Y, X);
+            Console.Write('@');
+        }
+
+        static void DrawMap(char [,] map)
+        {
+            for (int i = 0; i < map.GetLength(0); i++)
+            {
+                for (int j = 0; j < map.GetLength(1); j++)
+                {
+                        Console.Write(map[i,j]);
+                }
+
+                Console.WriteLine();
             }
         }
     }

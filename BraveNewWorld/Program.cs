@@ -6,10 +6,10 @@ namespace BraveNewWorld
     {
         static void Main(string[] args)
         {
-            int userX = 6;
-            int userY = 6;
-            int userDX = 0;
-            int userDY = 1;
+            int userPositionX = 6;
+            int userPositionY = 6;
+            int userDirectionX = 0;
+            int userDirectionY = 1;
             bool isPlaying = true;
             char[,] map =
             {
@@ -35,58 +35,58 @@ namespace BraveNewWorld
 
             while (isPlaying)
             {
-                Console.SetCursorPosition(userY, userX);
+                Console.SetCursorPosition(userPositionY, userPositionX);
                 Console.Write('@');
 
                 if (Console.KeyAvailable == true)
                 {
                     ConsoleKeyInfo charKey = Console.ReadKey(true);
-                    ChangeDirection(charKey, ref userDX, ref userDY);
+                    ChangeDirection(charKey, ref userDirectionX, ref userDirectionY);
 
-                    if (map[userX + userDX, userY + userDY] != '#')
+                    if (map[userPositionX + userDirectionX, userPositionY + userDirectionY] != '#')
                     {
-                        MoveUser(ref userX, ref userY, userDX, userDY);
+                        MoveUser(ref userPositionX, ref userPositionY, userDirectionX, userDirectionY);
                     }
                 }
             }
         }
 
-        static void ChangeDirection(ConsoleKeyInfo key, ref int DX, ref int DY)
+        static void ChangeDirection(ConsoleKeyInfo key, ref int directionX, ref int directionY)
         {
             switch (key.Key)
             {
                 case ConsoleKey.UpArrow:
                 case ConsoleKey.W:
-                    DX = -1;
-                    DY = 0;
+                    directionX = -1;
+                    directionY = 0;
                     break;
                 case ConsoleKey.DownArrow:
                 case ConsoleKey.S:
-                    DX = 1;
-                    DY = 0;
+                    directionX = 1;
+                    directionY = 0;
                     break;
                 case ConsoleKey.LeftArrow:
                 case ConsoleKey.A:
-                    DX = 0;
-                    DY = -1;
+                    directionX = 0;
+                    directionY = -1;
                     break;
                 case ConsoleKey.RightArrow:
                 case ConsoleKey.D:
-                    DX = 0;
-                    DY = 1;
+                    directionX = 0;
+                    directionY = 1;
                     break;
             }
         }
 
-        static void MoveUser(ref int X, ref int Y, int DX, int DY)
+        static void MoveUser(ref int positionX, ref int positionY, int directionX, int directionY)
         {
-            Console.SetCursorPosition(Y, X);
+            Console.SetCursorPosition(positionY, positionX);
             Console.Write(" ");
 
-            X += DX;
-            Y += DY;
+            positionX += directionX;
+            positionY += directionY;
 
-            Console.SetCursorPosition(Y, X);
+            Console.SetCursorPosition(positionY, positionX);
             Console.Write('@');
         }
 

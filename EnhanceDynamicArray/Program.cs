@@ -24,7 +24,7 @@ namespace EnhanceDynamicArray
                         Console.WriteLine("Выход из программы.");
                         break;
                     default:
-                        GetNumber(dynamicArray, userInput);
+                        AddNumber(dynamicArray, userInput);
                         break;
                 }
             }
@@ -50,7 +50,7 @@ namespace EnhanceDynamicArray
             Console.Write("\b\b");
         }
 
-        static void GetNumber(List<int> dynamicArray, string userInput)
+        static void AddNumber(List<int> dynamicArray, string userInput)
         {
             int number;
 

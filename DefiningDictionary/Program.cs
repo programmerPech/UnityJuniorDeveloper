@@ -23,22 +23,17 @@ namespace DefiningDictionary
 
         static void GetValue(Dictionary<string,string> words,string word)
         {
-            switch (word)
+            if (words.ContainsKey(word))
             {
-                case "Инкапсуляция":
-                    Console.WriteLine(words[word]);
-                    break;
-                case "Полиморфизм":
-                    Console.WriteLine(words[word]);
-                    break;
-                case "Наследование":
-                    Console.WriteLine(words[word]);
-                    break;
-                case "Выход":
-                    break;
-                default:
-                    Console.WriteLine("Такого слова нет.");
-                    break;
+                Console.WriteLine(words[word]);
+            }
+            else if(word == "Выход")
+            {
+
+            }
+            else
+            {
+                Console.WriteLine("Такого слова нет.");
             }
         }
     }

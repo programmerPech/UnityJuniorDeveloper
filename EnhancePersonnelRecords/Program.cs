@@ -23,13 +23,13 @@ namespace EnhancePersonnelRecords
                 switch (userInput)
                 {
                     case "1":
-                        AddRecord(ref dataEmployee);
+                        AddRecord(dataEmployee);
                         break;
                     case "2":
                         ShowAllRecords(dataEmployee);
                         break;
                     case "3":
-                        DeleteRecord(ref dataEmployee);
+                        DeleteRecord(dataEmployee);
                         break;
                     case "4":
                         Console.WriteLine("Выход из программы.");
@@ -42,7 +42,7 @@ namespace EnhancePersonnelRecords
             }
         }
 
-        static void AddRecord(ref List<string> dataEmployee)
+        static void AddRecord(List<string> dataEmployee)
         {
             string fullname;
             string position;
@@ -70,13 +70,13 @@ namespace EnhancePersonnelRecords
 
             for (int i = 0; i < dataEmployee.Count; i++)
             {
-                Console.WriteLine((countEmployee++) + ". " + dataEmployee[i] + " - " + dataEmployee[i++]);
+                Console.WriteLine((countEmployee++) + ". " + dataEmployee[i] + " - " + dataEmployee[++i]);
             }
 
             EndAction();
         }
 
-        static void DeleteRecord(ref List<string> dataEmployee)
+        static void DeleteRecord(List<string> dataEmployee)
         {
             if (dataEmployee.Count > 0)
             {

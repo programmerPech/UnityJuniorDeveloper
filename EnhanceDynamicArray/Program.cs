@@ -40,6 +40,11 @@ namespace EnhanceDynamicArray
             }
 
             Console.WriteLine($"Сумма элементов динамического массива равна - {sumElementsArray}");
+            EndAction();
+        }
+
+        static void EndAction()
+        {
             Console.WriteLine("Для продолжения нажмите любую клавишу.\n");
             Console.ReadKey();
             Console.Write("\b\b");
@@ -59,9 +64,7 @@ namespace EnhanceDynamicArray
                 Console.WriteLine("Введено не число.");
             }
 
-            Console.WriteLine("Для продолжения нажмите любую клавишу.\n");
-            Console.ReadKey();
-            Console.Write("\b\b");
+            EndAction();
         }
     }
 }

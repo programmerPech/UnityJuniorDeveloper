@@ -56,7 +56,7 @@ namespace EnhanceDynamicArray
 
             if (Int32.TryParse(userInput, out number))
             {
-                dynamicArray.Add(Convert.ToInt32(userInput));
+                dynamicArray.Add(number);
                 Console.WriteLine("В динамический массив добавлено число " + userInput);
             }
             else

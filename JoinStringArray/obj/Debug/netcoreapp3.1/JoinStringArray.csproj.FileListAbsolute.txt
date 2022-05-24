@@ -1,0 +1,14 @@
+C:\Users\Beoning\source\repos\JoinStringArray\obj\Debug\netcoreapp3.1\JoinStringArray.csproj.AssemblyReference.cache
+C:\Users\Beoning\source\repos\JoinStringArray\obj\Debug\netcoreapp3.1\JoinStringArray.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Beoning\source\repos\JoinStringArray\obj\Debug\netcoreapp3.1\JoinStringArray.AssemblyInfoInputs.cache
+C:\Users\Beoning\source\repos\JoinStringArray\obj\Debug\netcoreapp3.1\JoinStringArray.AssemblyInfo.cs
+C:\Users\Beoning\source\repos\JoinStringArray\obj\Debug\netcoreapp3.1\JoinStringArray.csproj.CoreCompileInputs.cache
+C:\Users\Beoning\source\repos\JoinStringArray\bin\Debug\netcoreapp3.1\JoinStringArray.exe
+C:\Users\Beoning\source\repos\JoinStringArray\bin\Debug\netcoreapp3.1\JoinStringArray.deps.json
+C:\Users\Beoning\source\repos\JoinStringArray\bin\Debug\netcoreapp3.1\JoinStringArray.runtimeconfig.json
+C:\Users\Beoning\source\repos\JoinStringArray\bin\Debug\netcoreapp3.1\JoinStringArray.runtimeconfig.dev.json
+C:\Users\Beoning\source\repos\JoinStringArray\bin\Debug\netcoreapp3.1\JoinStringArray.dll
+C:\Users\Beoning\source\repos\JoinStringArray\bin\Debug\netcoreapp3.1\JoinStringArray.pdb
+C:\Users\Beoning\source\repos\JoinStringArray\obj\Debug\netcoreapp3.1\JoinStringArray.dll
+C:\Users\Beoning\source\repos\JoinStringArray\obj\Debug\netcoreapp3.1\JoinStringArray.pdb
+C:\Users\Beoning\source\repos\JoinStringArray\obj\Debug\netcoreapp3.1\JoinStringArray.genruntimeconfig.cache

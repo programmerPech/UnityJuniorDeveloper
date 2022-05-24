@@ -21,15 +21,15 @@ namespace ShopQueue
             purchaseSum.Enqueue(1092);
             purchaseSum.Enqueue(500);
 
-            for (int i = 0; i < countClients; i++)
+            while(purchaseSum.Count>0)
             {
-                ServiceClient(ref purchaseSum, ref bill);
+                ServiceClient(purchaseSum, ref bill);
             }
 
             Console.WriteLine("\b\bМы обслужили всех клиентов. На нашем счету "+bill);
         }
 
-        static void ServiceClient(ref Queue<double> purchaseSum, ref double bill)
+        static void ServiceClient(Queue<double> purchaseSum, ref double bill)
         {
             Console.WriteLine("\b\bОбслуживаем клинта с сумой покупки " + purchaseSum.Peek());
             bill += purchaseSum.Dequeue();

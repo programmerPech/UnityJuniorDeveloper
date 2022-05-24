@@ -7,8 +7,7 @@ namespace EnhancePersonnelRecords
     {
         static void Main(string[] args)
         {
-            List<string> fullnameArray = new List<string>(3) { "Иванов Иван Иванович", "Петров Петр Петрович", "Семенов Семен Семенович" };
-            List<string> positionArray = new List<string>(3) { "Геймдизайнер", "C#-программист", "Unity-программист" };
+            List<string> dataEmployee = new List<string>() { "Иванов Иван Иванович", "Геймдизайнер", "Петров Петр Петрович", "C#-программист", "Семенов Семен Семенович", "Unity-программист" };
             string userInput = "";
 
             while (userInput != "4")
@@ -24,13 +23,13 @@ namespace EnhancePersonnelRecords
                 switch (userInput)
                 {
                     case "1":
-                        AddRecord(ref fullnameArray, ref positionArray);
+                        AddRecord(ref dataEmployee);
                         break;
                     case "2":
-                        ShowAllRecords(fullnameArray, positionArray);
+                        ShowAllRecords(dataEmployee);
                         break;
                     case "3":
-                        DeleteRecord(ref fullnameArray, ref positionArray);
+                        DeleteRecord(ref dataEmployee);
                         break;
                     case "4":
                         Console.WriteLine("Выход из программы.");
@@ -43,7 +42,7 @@ namespace EnhancePersonnelRecords
             }
         }
 
-        static void AddRecord(ref List<string> fullnameArray, ref List<string> positionArray)
+        static void AddRecord(ref List<string> dataEmployee)
         {
             string fullname;
             string position;
@@ -52,8 +51,8 @@ namespace EnhancePersonnelRecords
             fullname = Console.ReadLine();
             Console.WriteLine("Введите должность");
             position = Console.ReadLine();
-            fullnameArray.Add(fullname);
-            positionArray.Add(position);
+            dataEmployee.Add(fullname);
+            dataEmployee.Add(position);
             Console.WriteLine("Запись с ФИО " + fullname + " и должностью " + position + " успешно добавлена.");
             EndAction();
         }
@@ -65,24 +64,26 @@ namespace EnhancePersonnelRecords
             Console.Clear();
         }
 
-        static void ShowAllRecords(List<string> fullnameArray, List<string> positionArray)
+        static void ShowAllRecords(List<string> dataEmployee)
         {
-            for (int i = 0; i < fullnameArray.Count; i++)
+            int countEmployee = 1;
+
+            for (int i = 0; i < dataEmployee.Count; i++)
             {
-                Console.WriteLine((i + 1) + ". " + fullnameArray[i] + " - " + positionArray[i]);
+                Console.WriteLine((countEmployee++) + ". " + dataEmployee[i] + " - " + dataEmployee[i++]);
             }
 
             EndAction();
         }
 
-        static void DeleteRecord(ref List<string> fullnameArray, ref List<string> positionArray)
+        static void DeleteRecord(ref List<string> dataEmployee)
         {
-            if (fullnameArray.Count > 0 && positionArray.Count > 0)
+            if (dataEmployee.Count > 0)
             {
-                string fullname = fullnameArray[fullnameArray.Count - 1];
-                string position = positionArray[positionArray.Count - 1];
-                fullnameArray.RemoveAt(fullnameArray.Count - 1);
-                positionArray.RemoveAt(positionArray.Count - 1);
+                string fullname = dataEmployee[dataEmployee.Count - 2];
+                string position = dataEmployee[dataEmployee.Count - 1];
+                dataEmployee.RemoveAt(dataEmployee.Count - 2);
+                dataEmployee.RemoveAt(dataEmployee.Count - 1);
                 Console.WriteLine("Запись с ФИО " + fullname + " и должностью " + position + " успешно удалена.");
                 EndAction();
             }

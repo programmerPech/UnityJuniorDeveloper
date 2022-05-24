@@ -27,10 +27,6 @@ namespace DefiningDictionary
             {
                 Console.WriteLine(words[word]);
             }
-            else if(word == "Выход")
-            {
-
-            }
             else
             {
                 Console.WriteLine("Такого слова нет.");

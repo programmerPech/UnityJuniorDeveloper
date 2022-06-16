@@ -9,47 +9,52 @@ namespace WorkWIthProperties
             Player player1 = new Player(10, 0);
             Player player2 = new Player(0, 10);
             Player player3 = new Player(10, 10);
-            Renderer renderer = new Renderer();
-            renderer.RenderPlayer(player1);
-            renderer.RenderPlayer(player2);
-            renderer.RenderPlayer(player3);
+            player1.ShowPlayer();
+            player2.ShowPlayer();
+            player3.ShowPlayer();
             Console.ReadKey();
         }
     }
 
     class Player
     {
-        public int coordinateX;
-        public int coordinateY;
+        private int _positionX;
+        private int _positionY;
 
-        public Player(int x, int y)
+        public Player(int positionX, int positionY)
         {
-            coordinateX = x;
-            coordinateY = y;
+            _positionX = positionX;
+            _positionY = positionY;
+        }
+
+        public void ShowPlayer()
+        {
+            Renderer renderer = new Renderer();
+            renderer.RenderPlayer(_positionX, _positionY);
         }
     }
 
     class Renderer
     {
-        public void RenderPlayer(Player player)
+        public void RenderPlayer(int positionX,int positionY)
         {
-            if (player.coordinateX < 1)
-                player.coordinateX = 1;
+            if (positionX < 1)
+                positionX = 1;
 
-            if (player.coordinateY < 1)
-                player.coordinateY = 1;
+            if (positionY < 1)
+                positionY = 1;
 
-            Console.SetCursorPosition(player.coordinateY, player.coordinateX - 1);
+            Console.SetCursorPosition(positionY, positionX - 1);
             Console.Write("0");
-            Console.SetCursorPosition(player.coordinateY - 1, player.coordinateX);
+            Console.SetCursorPosition(positionY - 1, positionX);
             Console.Write("-");
-            Console.SetCursorPosition(player.coordinateY + 1, player.coordinateX);
+            Console.SetCursorPosition(positionY + 1, positionX);
             Console.Write("-");
-            Console.SetCursorPosition(player.coordinateY, player.coordinateX);
+            Console.SetCursorPosition(positionY, positionX);
             Console.Write("|");
-            Console.SetCursorPosition(player.coordinateY - 1, player.coordinateX + 1);
+            Console.SetCursorPosition(positionY - 1, positionX + 1);
             Console.Write("/");
-            Console.SetCursorPosition(player.coordinateY + 1, player.coordinateX + 1);
+            Console.SetCursorPosition(positionY + 1, positionX + 1);
             Console.Write("\\");
         }
     }

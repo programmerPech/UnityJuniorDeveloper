@@ -22,13 +22,16 @@ namespace PlayersDB
                         database.AddPlayer();
                         break;
                     case "2":
-                        database.ModifyPlayer(userInput);
+                        Console.WriteLine("Введите уникальный номер игрока, которого хотите забанить.");
+                        database.BanPlayer(database.GetPlayer());
                         break;
                     case "3":
-                        database.ModifyPlayer(userInput);
+                        Console.WriteLine("Введите уникальный номер игрока, которого хотите разбанить.");
+                        database.UnbanPlayer(database.GetPlayer());
                         break;
                     case "4":
-                        database.ModifyPlayer(userInput);
+                        Console.WriteLine("Введите уникальный номер игрока, которого хотите удалить.");
+                        database.DeletePlayer(database.GetPlayer());
                         break;
                     case "5":
                         database.ShowAllPlayers();
@@ -52,70 +55,74 @@ namespace PlayersDB
     {
         private List<Player> _players = new List<Player>();
 
-        public void ModifyPlayer(string userInput)
+        public void BanPlayer(Player player)
         {
-            bool isFindID = false;
-            int modifyId;
-
-            if (userInput == "2")
+            if (player != null)
             {
-                Console.WriteLine("Введите уникальный номер игрока, которого хотите забанить.");
-            }
-            else if(userInput == "3")
-            {
-                Console.WriteLine("Введите уникальный номер игрока, которого хотите разбанить.");
+                player.Ban();
+                Console.WriteLine("Игрок с ID " + player.Id + " успешно забанен.");
             }
             else
             {
-                Console.WriteLine("Введите уникальный номер игрока, которого хотите удалить.");
+                Console.WriteLine("Не удалось найти игрока м таким ID.");
             }
+        }
 
-            if (Int32.TryParse(Console.ReadLine(), out modifyId))
+        public void UnbanPlayer(Player player)
+        {
+            if (player != null)
+            {
+                player.Unban();
+                Console.WriteLine("Игрок с ID " + player.Id + " успешно разбанен.");
+            }
+            else
+            {
+                Console.WriteLine("Не удалось найти игрока м таким ID.");
+            }
+        }
+
+        public void DeletePlayer(Player player)
+        {
+            if (player != null)
             {
                 for (int i = 0; i < _players.Count; i++)
                 {
-                    if (_players[i].Id == modifyId && _players[i].Banned == false && userInput =="2")
-                    {
-                        _players[i].Banned = true;
-                        isFindID = true;
-                        break;
-                    }
-                    else if (_players[i].Id == modifyId && _players[i].Banned == true && userInput == "3")
-                    {
-                        _players[i].Banned = false;
-                        isFindID = true;
-                        break;
-                    }
-                    else if (_players[i].Id == modifyId && userInput=="4")
+                    if (_players[i].Id == player.Id)
                     {
                         _players.Remove(_players[i]);
-                        isFindID = true;
+                        Console.WriteLine("Игрок с ID " + player.Id + " успешно удален.");
                         break;
                     }
                 }
+            }
+            else
+            {
+                Console.WriteLine("Не удалось найти игрока м таким ID.");
+            }
+        }
 
-                if (isFindID == true &&userInput =="2")
+        public Player GetPlayer()
+        {
+            int playerId;
+
+            if (Int32.TryParse(Console.ReadLine(), out playerId))
+            {
+                for (int i = 0; i < _players.Count; i++)
                 {
-                    Console.WriteLine("Игрок с ID " + modifyId + " успешно забанен.");
-                }
-                else if(isFindID == true && userInput == "3")
-                {
-                    Console.WriteLine("Игрок с ID " + modifyId + " успешно разбанен.");
-                }
-                else if(isFindID == true && userInput == "4")
-                {
-                    Console.WriteLine("Игрок с ID " + modifyId + " успешно удален.");
-                }
-                else
-                {
-                    Console.WriteLine("Не удалось найти игрока м таким ID.");
+                    if (_players[i].Id == playerId)
+                    {
+                        return _players[i];
+                    }
                 }
             }
             else
             {
                 Console.WriteLine("Не удалось выполнить действие, так как вы ввели не числовое значение.");
             }
+
+            return null;
         }
+
         public void AddPlayer()
         {
             Console.WriteLine("Введите никнейм игрока:");
@@ -126,7 +133,7 @@ namespace PlayersDB
 
             if(Int32.TryParse(level, out resultParse))
             {
-                _players.Add(new Player(nickname, Convert.ToInt32(level), false));
+                _players.Add(new Player(_players.Count + 1,nickname, resultParse, false));
                 Console.WriteLine("Новый игрок успешно добавлен в базу.");
             }
             else
@@ -154,14 +161,12 @@ namespace PlayersDB
 
     class Player
     {
-        private static int _ids = 0;
         private string _nickname;
         private int _level;
-        private bool _banned;
 
         public int Id
         {
-            get; set;
+            get; private set;
         }
 
         public string Nickname
@@ -176,16 +181,25 @@ namespace PlayersDB
 
         public bool Banned
         {
-            get { return _banned; }
-            set { _banned = value; }
+            get; private set;
         }
 
-        public Player(string nickname, int level, bool banned)
+        public void Ban()
         {
-            Id= ++_ids;
+            Banned = true;
+        }
+
+        public void Unban()
+        {
+            Banned = false;
+        }
+
+        public Player(int id, string nickname, int level, bool banned)
+        {
+            Id = id;
             _nickname = nickname;
             _level = level;
-            _banned = banned;
+            Banned = banned;
         }
     }
 }

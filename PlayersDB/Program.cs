@@ -64,7 +64,7 @@ namespace PlayersDB
             }
             else
             {
-                Console.WriteLine("Не удалось найти игрока м таким ID.");
+                Console.WriteLine("Не удалось найти игрока c таким ID.");
             }
         }
 
@@ -77,7 +77,7 @@ namespace PlayersDB
             }
             else
             {
-                Console.WriteLine("Не удалось найти игрока м таким ID.");
+                Console.WriteLine("Не удалось найти игрока c таким ID.");
             }
         }
 
@@ -97,7 +97,7 @@ namespace PlayersDB
             }
             else
             {
-                Console.WriteLine("Не удалось найти игрока м таким ID.");
+                Console.WriteLine("Не удалось найти игрока c таким ID.");
             }
         }
 

@@ -11,30 +11,31 @@ namespace DeckOfCards
             int countPullCards = 0;
             Console.WriteLine("Введите ваше имя: ");
             Player player = new Player(Console.ReadLine());
-            Console.WriteLine(player.GetName() + ", сколько карт вы хотите взять?");
+            Console.WriteLine(player.Name + ", сколько карт вы хотите взять?");
             userInput = Console.ReadLine();
             Deck deck = new Deck();
             deck.Shuffle(100);
 
             if(Int32.TryParse(userInput, out countPullCards) && countPullCards <= deck.GetCardsCount())
             {
-                List<string> handCards = new List<string>(countPullCards);
+                List<Card> handCards = new List<Card>(countPullCards);
 
                 for(int i = 0; i < countPullCards; i++)
                 {
-                    handCards.Add(deck.Deal().ShowCardInfo());
+                    handCards.Add(deck.Deal());
                 }
 
-                Console.WriteLine(player.GetName() + ", вы вытянули следующие карты: ");
+                player.SetHandCards(handCards);
+                Console.WriteLine(player.Name + ", вы вытянули следующие карты: ");
 
-                foreach(var card in handCards)
+                foreach(var card in player.HandCards)
                 {
-                    Console.WriteLine(card+ " ");
+                    Console.WriteLine(card.ShowCardInfo() + " ");
                 }
             }
             else if(countPullCards >= deck.GetCardsCount())
             {
-                Console.WriteLine(player.GetName()+", вы не можете вытянуть такое количество карт.");
+                Console.WriteLine(player.Name+", вы не можете вытянуть такое количество карт.");
             }
             else
             {
@@ -45,23 +46,23 @@ namespace DeckOfCards
 
     class Deck
     {
-        private const int CARDSCOUNT = 52;
-        private const int SUITSCOUNT = 4;
-        private const int RANKSCOUNT = 13;
+        private const int CardsCount = 52;
+        private string[] _suits = new string[] { "Spades", "Hearts", "Clubs", "Diamonds" };
+        private string[] _ranks = new string[] { "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King", "Ace" };
         private Card[] _cards;
         private int _currentCard;
         private Random _randomNumber;
 
         public Deck()
         {
-            _cards = new Card[CARDSCOUNT];
+            _cards = new Card[CardsCount];
             int index = 0;
 
-            for (int suit = 0; suit < SUITSCOUNT; suit++)
+            for (int suit = 0; suit < _suits.Length; suit++)
             {
-                for(int rank = 0; rank < RANKSCOUNT; rank++)
+                for(int rank = 0; rank < _ranks.Length; rank++)
                 {
-                    _cards[index++] = new Card(suit, rank);
+                    _cards[index++] = new Card(_suits[suit], _ranks[rank]);
                 }
             }
 
@@ -70,7 +71,7 @@ namespace DeckOfCards
 
         public int GetCardsCount()
         {
-            return CARDSCOUNT;
+            return CardsCount;
         }
 
         public void Shuffle(int count)
@@ -80,8 +81,8 @@ namespace DeckOfCards
 
             for (int k = 0; k < count; k++)
             {
-                index1 = _randomNumber.Next(CARDSCOUNT);
-                index2 = _randomNumber.Next(CARDSCOUNT);
+                index1 = _randomNumber.Next(CardsCount);
+                index2 = _randomNumber.Next(CardsCount);
                 Card tempCard = _cards[index1];
                 _cards[index1] = _cards[index2];
                 _cards[index2] = tempCard;
@@ -92,7 +93,7 @@ namespace DeckOfCards
 
         public Card Deal()
         {
-            if (_currentCard < CARDSCOUNT)
+            if (_currentCard < CardsCount)
             {
                 return _cards[_currentCard++];
             }
@@ -105,13 +106,10 @@ namespace DeckOfCards
 
     class Card
     {
-        private string[] _suits = new string[] { "Spades", "Hearts", "Clubs", "Diamonds" };
-        private string[] _ranks = new string[] { "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King", "Ace" };
+        private string _cardSuit;
+        private string _cardRank;
 
-        private int _cardSuit;
-        private int _cardRank;
-
-        public Card(int suit, int rank)
+        public Card(string suit, string rank)
         {
             _cardSuit = suit;
             _cardRank = rank;
@@ -119,22 +117,23 @@ namespace DeckOfCards
 
         public string ShowCardInfo()
         {
-            return _ranks[_cardRank] + " of " + _suits[_cardSuit];
+            return _cardRank + " of " + _cardSuit;
         }
     }
 
     class Player
     {
-        private string _name;
+        public string Name { get; private set; }
+        public List<Card> HandCards { get; private set; }
 
         public Player(string name)
         {
-            _name = name;
+            Name = name;
         }
 
-        public string GetName()
+        public void SetHandCards (List<Card> cards)
         {
-            return _name;
+            HandCards = cards;
         }
     }
 }

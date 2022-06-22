@@ -237,10 +237,5 @@ namespace StorageOfBooks
                 Console.WriteLine(book.Id+ ". Название: "+book.Name+" Автор: "+book.Author+" Год издания: "+book.Year);
             }
         }
-
-        public int GetBooksCount()
-        {
-            return _books.Count;
-        }
     }
 }

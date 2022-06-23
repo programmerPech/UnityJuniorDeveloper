@@ -98,7 +98,7 @@ namespace StorageOfBooks
             }
         }
 
-        public int GetUserInputYear()
+        private int GetUserInputYear()
         {
             int bookYear;
 
@@ -113,7 +113,7 @@ namespace StorageOfBooks
             }
         }
 
-        public Book GetBook(int id)
+        private Book GetBook(int id)
         {
             for (int i = 0; i < _books.Count; i++)
             {
@@ -147,7 +147,7 @@ namespace StorageOfBooks
             }
         }
 
-        public void SearchBooksForName()
+        private void SearchBooksForName()
         {
             Console.WriteLine("Введите название: ");
             string name = Console.ReadLine();
@@ -169,7 +169,7 @@ namespace StorageOfBooks
             }
         }
 
-        public void SearchBooksForAuthor()
+        private void SearchBooksForAuthor()
         {
             Console.WriteLine("Введите автора: ");
             string author = Console.ReadLine();
@@ -191,7 +191,7 @@ namespace StorageOfBooks
             }
         }
 
-        public void SearchBooksForYear()
+        private void SearchBooksForYear()
         {
             Console.WriteLine("Введите год издания: ");
             int year = GetUserInputYear();

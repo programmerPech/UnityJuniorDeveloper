@@ -98,34 +98,6 @@ namespace StorageOfBooks
             }
         }
 
-        private int GetUserInputYear()
-        {
-            int bookYear;
-
-            if(Int32.TryParse(Console.ReadLine(), out bookYear))
-            {
-                return bookYear;
-            }
-            else
-            {
-                Console.WriteLine("Год издания указан неверно.");
-                return 0;
-            }
-        }
-
-        private Book GetBook(int id)
-        {
-            for (int i = 0; i < _books.Count; i++)
-            {
-                if(_books[i].Id == id)
-                {
-                    return _books[i];
-                }
-            }
-
-            return null;
-        }
-
         public void SearchBooksForParameter()
         {
             Console.WriteLine("Поиск книги по параметру.\nВыберите один из параметров:\n1 - Поиск по названию.\n2 - Поиск по автору.\n3 - Поиск по году издания.");
@@ -147,6 +119,59 @@ namespace StorageOfBooks
             }
         }
 
+        public void DeleteBook()
+        {
+            Console.WriteLine("Ввкдите идентификатор книги, которую хотите удалить: ");
+            int idBook;
+
+            if(Int32.TryParse(Console.ReadLine(),out idBook))
+            {
+                _deletedBooksCount++;
+                _books.Remove(GetBook(idBook));
+                Console.WriteLine("Книга успешно удалена из хранилища.");
+            }
+            else
+            {
+                Console.WriteLine("Не удалось выполнить удаление. Ожидалось числовое значение.");
+            }
+        }
+
+        public void ShowAllBooks()
+        {
+            foreach (var book in _books)
+            {
+                Console.WriteLine(book.Id+ ". Название: "+book.Name+" Автор: "+book.Author+" Год издания: "+book.Year);
+            }
+        }
+
+        private int GetUserInputYear()
+        {
+            int bookYear;
+
+            if (Int32.TryParse(Console.ReadLine(), out bookYear))
+            {
+                return bookYear;
+            }
+            else
+            {
+                Console.WriteLine("Год издания указан неверно.");
+                return 0;
+            }
+        }
+
+        private Book GetBook(int id)
+        {
+            for (int i = 0; i < _books.Count; i++)
+            {
+                if (_books[i].Id == id)
+                {
+                    return _books[i];
+                }
+            }
+
+            return null;
+        }
+
         private void SearchBooksForName()
         {
             Console.WriteLine("Введите название: ");
@@ -159,7 +184,7 @@ namespace StorageOfBooks
                 if (_books[i].Name.ToLower().Contains(name.ToLower()))
                 {
                     isFind = true;
-                    Console.WriteLine(_books[i].Id +". Название: "+_books[i].Name+" Автор: "+_books[i].Author+" Год издания: "+_books[i].Year);
+                    Console.WriteLine(_books[i].Id + ". Название: " + _books[i].Name + " Автор: " + _books[i].Author + " Год издания: " + _books[i].Year);
                 }
             }
 
@@ -200,7 +225,7 @@ namespace StorageOfBooks
 
             for (int i = 0; i < _books.Count; i++)
             {
-                if (_books[i].Year ==year)
+                if (_books[i].Year == year)
                 {
                     isFind = true;
                     Console.WriteLine(_books[i].Id + ". Название: " + _books[i].Name + " Автор: " + _books[i].Author + " Год издания: " + _books[i].Year);
@@ -210,31 +235,6 @@ namespace StorageOfBooks
             if (isFind == false)
             {
                 Console.WriteLine("По вашему запросу ничего не найдено.");
-            }
-        }
-
-        public void DeleteBook()
-        {
-            Console.WriteLine("Ввкдите идентификатор книги, которую хотите удалить: ");
-            int idBook;
-
-            if(Int32.TryParse(Console.ReadLine(),out idBook))
-            {
-                _deletedBooksCount++;
-                _books.Remove(GetBook(idBook));
-                Console.WriteLine("Книга успешно удалена из хранилища.");
-            }
-            else
-            {
-                Console.WriteLine("Не удалось выполнить удаление. Ожидалось числовое значение.");
-            }
-        }
-
-        public void ShowAllBooks()
-        {
-            foreach (var book in _books)
-            {
-                Console.WriteLine(book.Id+ ". Название: "+book.Name+" Автор: "+book.Author+" Год издания: "+book.Year);
             }
         }
     }

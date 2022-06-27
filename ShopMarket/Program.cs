@@ -22,10 +22,12 @@ namespace ShopMarket
                         player.BuyProduct(trader);
                         break;
                     case "2":
+                        Console.WriteLine("Список товаров торговца: ");
                         trader.ShowProducts();
                         break;
                     case "3":
-                        player.ShowBagProducts();
+                        Console.WriteLine("Ваш список товаров: ");
+                        player.ShowProducts();
                         break;
                     case "4":
                         Console.WriteLine("Выход из магазина.");
@@ -42,11 +44,29 @@ namespace ShopMarket
         }
     }
 
-    class Player
+    class Human
     {
-        List<Product> _bag = new List<Product>();
-        public double Money { get; private set; }
+        protected List<Product> _listOfProducts = new List<Product>();
+        public double Money { get; protected set; }
 
+        public  void ShowProducts()
+        {
+            if (_listOfProducts.Count > 0)
+            {
+                foreach (var product in _listOfProducts)
+                {
+                    Console.WriteLine(product.Id+". "+product.Name+ " по цене "+product.Cost);
+                }
+            }
+            else
+            {
+                Console.WriteLine("Ничего нет.");
+            }
+        }
+    }
+
+    class Player : Human
+    {
         public Player()
         {
             Money = 200.00;
@@ -68,7 +88,7 @@ namespace ShopMarket
                     if(product.Cost < Money)
                     {
                         Money -= product.Cost;
-                        _bag.Add(product);
+                        _listOfProducts.Add(product);
                         Console.WriteLine("Вы успешно купили "+ product.Name+". Ваши деньги: "+Money);
                         trader.SellProduct(product);
                     }
@@ -87,33 +107,13 @@ namespace ShopMarket
                 Console.WriteLine("Ошибка! Ожидалось числовое значение.");
             }
         }
-        
-        public void ShowBagProducts()
-        {
-            if (_bag.Count > 0)
-            {
-                Console.WriteLine("В вашей сумке имеется: ");
-
-                foreach (var product in _bag)
-                {
-                    Console.WriteLine(product.Name);
-                }
-            }
-            else
-            {
-                Console.WriteLine("Ваша сумка пуста.");
-            }
-        }
     }
 
-    class Trader
+    class Trader : Human
     {
-        private List<Product> _listOfProducts = new List<Product>();
-        public double Balance { get; private set; }
-
         public Trader()
         {
-            Balance = 500;
+            Money = 500;
             _listOfProducts.Add(new Product(1, "Зелье Здоровья", 5.5));
             _listOfProducts.Add(new Product(2, "Зелье Магии", 4.5));
             _listOfProducts.Add(new Product(3, "Меч Тысячи Истин", 99999999.99));
@@ -134,28 +134,11 @@ namespace ShopMarket
             return null;
         }
 
-        public void ShowProducts()
-        {
-            if (_listOfProducts.Count > 0)
-            {
-                Console.WriteLine("Список товаров:");
-
-                foreach (var product in _listOfProducts)
-                {
-                    Console.WriteLine(product.Id+". "+product.Name+" по цене "+product.Cost);
-                }
-            }
-            else
-            {
-                Console.WriteLine("Сейчас у вас нет товаров на продажу.");
-            }
-        }
-
         public void SellProduct(Product product)
         {
-            Balance += product.Cost;
+            Money += product.Cost;
             _listOfProducts.Remove(product);
-            Console.WriteLine("Баланс продавца - " + Balance);
+            Console.WriteLine("Баланс продавца - " + Money);
         }
     }
 

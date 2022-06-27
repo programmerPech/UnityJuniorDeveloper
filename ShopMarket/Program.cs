@@ -106,29 +106,6 @@ namespace ShopMarket
         }
     }
 
-    class Human
-    {
-        private List<Product> _listOfProducts = new List<Product>();
-        public double Money { get; private set; }
-        public void ShowProducts()
-        {
-            if (_listOfProducts.Count > 0)
-            {
-                Console.WriteLine("У вас имеется: ");
-
-                foreach (var product in _listOfProducts)
-                {
-                    Console.WriteLine(product.Name);
-                }
-            }
-            else
-            {
-                Console.WriteLine("У вас нет продуктов.");
-            }
-        }
-
-    }
-
     class Trader
     {
         private List<Product> _listOfProducts = new List<Product>();
@@ -136,6 +113,7 @@ namespace ShopMarket
 
         public Trader()
         {
+            Balance = 500;
             _listOfProducts.Add(new Product(1, "Зелье Здоровья", 5.5));
             _listOfProducts.Add(new Product(2, "Зелье Магии", 4.5));
             _listOfProducts.Add(new Product(3, "Меч Тысячи Истин", 99999999.99));
@@ -160,6 +138,8 @@ namespace ShopMarket
         {
             if (_listOfProducts.Count > 0)
             {
+                Console.WriteLine("Список товаров:");
+
                 foreach (var product in _listOfProducts)
                 {
                     Console.WriteLine(product.Id+". "+product.Name+" по цене "+product.Cost);

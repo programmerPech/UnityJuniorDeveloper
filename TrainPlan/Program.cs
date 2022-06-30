@@ -156,9 +156,9 @@ namespace TrainPlan
 
     class Train
     {
+        private List<Van> _vans = new List<Van>();
         public int Capacity { get; private set; }
         public int VansCount { get; private set; }
-        private List<Van> _vans = new List<Van>();
 
         public void Create()
         {

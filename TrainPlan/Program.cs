@@ -13,17 +13,14 @@ namespace TrainPlan
             while (userInput != "2")
             {
                 Console.WriteLine("Программа для создания плана поездов.\nВыберите команду:\n1 - Составить план\n2 - Выйти из программы.");
-                
+
                 if (plan.GetPlansCount() == 0)
                 {
                     Console.WriteLine("Нет текущих планов.");
                 }
                 else
                 {
-                    foreach (var route in plan.GetPlans())
-                    {
-                        Console.WriteLine(route);
-                    }
+                    plan.Show();
                 }
 
                 userInput = Console.ReadLine();
@@ -82,9 +79,12 @@ namespace TrainPlan
             }
         }
 
-        public List<string> GetPlans()
+        public void Show()
         {
-            return _plans;
+            foreach (var plan in _plans)
+            {
+                Console.WriteLine(plan);
+            }
         }
 
         public int GetPlansCount()
@@ -95,7 +95,7 @@ namespace TrainPlan
         {
             Console.WriteLine("Процесс продажи билетов...");
             int passengersCount = GetPassengersCount();
-            Console.WriteLine(passengersCount+ " человек купили билеты.");
+            Console.WriteLine(passengersCount + " человек купили билеты.");
             return passengersCount;
         }
 
@@ -110,9 +110,8 @@ namespace TrainPlan
         {
             _train.Create();
 
-            if(_train.Capacity>= passengersCount)
+            if (_train.Capacity >= passengersCount)
             {
-                Console.WriteLine("Поезд успешно создан.");
                 _routes.Clear();
                 return true;
             }
@@ -159,15 +158,13 @@ namespace TrainPlan
     {
         public int Capacity { get; private set; }
         public int VansCount { get; private set; }
+        private List<Van> _vans = new List<Van>();
 
         public void Create()
         {
             if (TryCreateVan())
             {
-                if (TrySetCapacityVan())
-                {
-                    Console.WriteLine("Поезд успешно создан.");
-                }
+                Console.WriteLine("Поезд успешно создан.");
             }
         }
 
@@ -176,11 +173,19 @@ namespace TrainPlan
             Console.WriteLine("Введите количество вагонов: ");
             int vansCount;
 
-            if(GetNumber(out vansCount))
+            if (GetNumber(out vansCount))
             {
                 VansCount = vansCount;
-                Console.WriteLine("Успешно созданы "+VansCount+" вагонов.");
-                return true;
+                Console.WriteLine("Успешно созданы " + VansCount + " вагонов.");
+
+                if (TrySetCapacityVan())
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
             else
             {
@@ -192,9 +197,14 @@ namespace TrainPlan
         {
             Console.WriteLine("Введите вместимость одного вагона: ");
             int seatsCount;
-            
-            if(GetNumber(out seatsCount))
+
+            if (GetNumber(out seatsCount))
             {
+                for (int i = 0; i < VansCount; i++)
+                {
+                    _vans.Add(new Van(seatsCount));
+                }
+
                 Capacity = seatsCount * VansCount;
                 Console.WriteLine($"Вагоны успешно созданы общей вместимостью {Capacity} мест.");
                 return true;
@@ -209,7 +219,7 @@ namespace TrainPlan
         {
             bool isNumber = Int32.TryParse(Console.ReadLine(), out number);
 
-            if(isNumber == false)
+            if (isNumber == false)
             {
                 Console.WriteLine("Ошибка! Ожидалось число.");
                 return false;
@@ -218,6 +228,16 @@ namespace TrainPlan
             {
                 return true;
             }
+        }
+    }
+
+    class Van
+    {
+        private int _capacity;
+
+        public Van(int capacity)
+        {
+            _capacity = capacity;
         }
     }
 }

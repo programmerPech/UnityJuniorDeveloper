@@ -58,7 +58,7 @@ namespace GladiatorsFights
             Console.WriteLine("Боец 2:");
             ChooseGladiator(out _rightGladiator);
 
-            if (_leftGladiator == null || _rightGladiator == null)
+            if (_rightGladiator == null)
             {
                 Console.WriteLine("Ошибка при при выборе бойца.");
                 return false;

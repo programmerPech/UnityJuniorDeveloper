@@ -44,8 +44,8 @@ namespace War
 
             while (_firstPlatoon.GetSoldiersCount() > 0 && _secondPlatoon.GetSoldiersCount() > 0)
             {
-                _firstSoldier = _firstPlatoon.GetSoldierFromPlatoon(_random);
-                _secondSoldier = _secondPlatoon.GetSoldierFromPlatoon(_random);
+                _firstSoldier = _firstPlatoon.GetCurrentSoldier(_random);
+                _secondSoldier = _secondPlatoon.GetCurrentSoldier(_random);
                 Console.WriteLine("Способность солдата из первого взвода: ");
                 _firstSoldier.UseSpecialAbility(_random);
                 Console.WriteLine("Способность солдата из второго взвода: ");
@@ -87,12 +87,12 @@ namespace War
         {
             if (_firstSoldier.Health <= 0)
             {
-                _firstPlatoon.DeleteSoldierFromPlatoon(_firstSoldier);
+                _firstPlatoon.DeleteSoldier(_firstSoldier);
             }
 
             if (_secondSoldier.Health <= 0)
             {
-                _secondPlatoon.DeleteSoldierFromPlatoon(_secondSoldier);
+                _secondPlatoon.DeleteSoldier(_secondSoldier);
             }
         }
     }
@@ -103,7 +103,7 @@ namespace War
 
         public Platoon(int soldiersCount, Random random)
         {
-            CreateNewPlatoon(soldiersCount, _soldiers, random);
+            Create(soldiersCount, _soldiers, random);
         }
 
         public void ShowInfo()
@@ -116,12 +116,12 @@ namespace War
             }
         }
 
-        public void DeleteSoldierFromPlatoon(Soldier soldier)
+        public void DeleteSoldier(Soldier soldier)
         {
             _soldiers.Remove(soldier);
         }
 
-        public Soldier GetSoldierFromPlatoon(Random random)
+        public Soldier GetCurrentSoldier(Random random)
         {
             int minimalCount = 0;
             return _soldiers[random.Next(minimalCount, _soldiers.Count)];
@@ -132,15 +132,17 @@ namespace War
             return _soldiers.Count;
         }
 
-        private void CreateNewPlatoon(int soldiersCount, List<Soldier> soldiers, Random random)
+        private void Create(int soldiersCount, List<Soldier> soldiers, Random random)
         {
             for (int i = 0; i < soldiersCount; i++)
             {
-                soldiers.Add(GetSoldier(random));
+                soldiers.Add(GetNewSoldier
+                    
+                    (random));
             }
         }
 
-        private Soldier GetSoldier(Random random)
+        private Soldier GetNewSoldier(Random random)
         {
             int minimumCountClassSoldier = 0;
             int maximumCountClassSoldier = 4;

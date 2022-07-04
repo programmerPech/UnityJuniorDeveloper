@@ -43,7 +43,7 @@ namespace Supermarket
             return totalPrice;
         }
 
-        public void GetProducts()
+        public void ShowProducts()
         {
             if (_cartProducts.Count == 0)
             {
@@ -89,7 +89,7 @@ namespace Supermarket
 
         public Supermarket(int clientsCount)
         {
-            SetProducts();
+            AddProducts();
             CreateQueue(clientsCount);
             ServiceClients();
         }
@@ -106,7 +106,7 @@ namespace Supermarket
         {
             while (_clients.Count != 0)
             {
-                GetInfo();
+                ShowInfo();
 
                 if (_clients.Peek().Money >= _clients.Peek().GetTotalPrice())
                 {
@@ -128,7 +128,7 @@ namespace Supermarket
                     }
 
                     Console.WriteLine("\nПокупатель смог себе позволить:");
-                    GetInfo();
+                    ShowInfo();
 
                     if (_clients.Peek().GetTotalPrice() != 0)
                     {
@@ -144,15 +144,15 @@ namespace Supermarket
             Console.WriteLine("Магазин обслужил всех клиентов и закрывается.");
         }
 
-        private void GetInfo()
+        private void ShowInfo()
         {
             Console.WriteLine("Товары покупателя: ");
-            _clients.Peek().GetProducts();
+            _clients.Peek().ShowProducts();
             Console.WriteLine($"Товаров на сумму: {_clients.Peek().GetTotalPrice()}");
             Console.WriteLine($"Денег у покупателя: {_clients.Peek().Money} ");
         }
 
-        private void SetProducts()
+        private void AddProducts()
         {
             _products.Add(new Product("Молоко", 60.5));
             _products.Add(new Product("Сухарики", 25.5));

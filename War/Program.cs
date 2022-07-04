@@ -57,7 +57,7 @@ namespace War
                 Console.WriteLine();
                 _firstSoldier.TakeDamage(_secondSoldier.Damage);
                 _secondSoldier.TakeDamage(_firstSoldier.Damage);
-                SoldierDied();
+                DeleteDiedSoldiers();
                 Console.ReadKey();
                 Console.Clear();
             }
@@ -83,7 +83,7 @@ namespace War
             }
         }
 
-        private void SoldierDied()
+        private void DeleteDiedSoldiers()
         {
             if (_firstSoldier.Health <= 0)
             {

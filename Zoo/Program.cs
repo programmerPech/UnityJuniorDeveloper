@@ -15,7 +15,7 @@ namespace Zoo
     class Zoo
     {
         private List<Aviary> _aviaries = new List<Aviary>();
-        private Random random = new Random();
+        private Random _random = new Random();
 
         public void ShowAviaries()
         {
@@ -49,7 +49,7 @@ namespace Zoo
         {
             for (int i = 0; i < aviaryCount; i++)
             {
-                _aviaries.Add(new Aviary(i, random));
+                _aviaries.Add(new Aviary(i, _random));
             }
         }
 
@@ -78,7 +78,6 @@ namespace Zoo
     {
         private Dictionary<int, Animal> _animals = new Dictionary<int, Animal>();
         private int _animalKind;
-        public int AnimalCount { get; private set; }
 
         public Aviary(int animalKind, Random random)
         {

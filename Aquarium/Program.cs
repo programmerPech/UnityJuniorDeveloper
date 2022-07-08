@@ -59,6 +59,7 @@ namespace Aquarium
 
         public void AddFish()
         {
+            List<Fish> fishes = new List<Fish>();
             int kindOfFish;
             int age;
 
@@ -73,28 +74,12 @@ namespace Aquarium
                 kindOfFish = GetNumber();
                 Console.WriteLine("Введите возраст рыбки:");
                 age = GetNumber();
-
-                switch (kindOfFish)
-                {
-                    case 1:
-                        _fishes.Add(new Carp(age));
-                        break;
-                    case 2:
-                        _fishes.Add(new Salmon(age));
-                        break;
-                    case 3:
-                        _fishes.Add(new Sturgeon(age));
-                        break;
-                    case 4:
-                        _fishes.Add(new Pike(age));
-                        break;
-                    case 5:
-                        _fishes.Add(new Fish(age));
-                        break;
-                    default:
-                        Console.WriteLine("Такой рыбы у нас нет.");
-                        break;
-                }
+                fishes.Add(new Carp(age));
+                fishes.Add(new Salmon(age));
+                fishes.Add(new Sturgeon(age));
+                fishes.Add(new Pike(age));
+                fishes.Add(new Fish(age));
+                _fishes.Add(fishes[kindOfFish - 1]);
             }
         }
 

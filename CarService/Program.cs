@@ -121,7 +121,6 @@ namespace CarService
             {
                 Console.WriteLine($"Вы не починили машину клиента и возмещаете ему ущерб в {workCost} у.е.");
                 _money -= workCost;
-
             }
         }
 
@@ -157,7 +156,6 @@ namespace CarService
                 int detailsCount = _random.Next(minimumDetailsCount, maximumDetailsCount);
                 _detailsInfo.Add(new DetailCount(_details[i], detailsCount));
             }
-
         }
 
         public void ShowInfo()
@@ -263,7 +261,6 @@ namespace CarService
             List<string> breakageDetails = new List<string>() { "Стекло", "Бампер", "Коробка передач", "Тормозные колодки", "Бензобак", "Фара", "Колесо" };
             int breakageID = _random.Next(_nameOfBreakages.Length);
             BreakageDetail = breakageDetails[breakageID];
-
         }
     }
 }

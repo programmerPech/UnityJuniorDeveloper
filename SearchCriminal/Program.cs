@@ -41,7 +41,7 @@ namespace SearchCriminal
 
     class CriminalDatabase
     {
-        List<CriminalPerson> _criminals = new List<CriminalPerson>();
+        private List<CriminalPerson> _criminals = new List<CriminalPerson>();
 
         public CriminalDatabase()
         {

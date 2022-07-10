@@ -41,9 +41,9 @@ namespace Amnesty
 
         public void Amnesty()
         {
-            var notAmnestyPersons = _criminals.Where(criminal => criminal.Crime != "Антиправительственное");
+            _criminals = _criminals.Where(criminal => criminal.Crime != "Антиправительственное").ToList();
 
-            foreach (var criminal in notAmnestyPersons)
+            foreach (var criminal in _criminals)
             {
                 criminal.ShowInfo();
             }
@@ -63,7 +63,7 @@ namespace Amnesty
 
         public void ShowInfo()
         {
-            Console.WriteLine($"Имя: {Name} \t\t Вид преступления: {Crime}");
+            Console.WriteLine($"ФИО: {Name} \t Вид преступления: {Crime}");
         }
     }
 }

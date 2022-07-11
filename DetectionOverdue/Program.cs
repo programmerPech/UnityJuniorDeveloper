@@ -8,7 +8,6 @@ namespace DetectionOverdue
     {
         static void Main(string[] args)
         {
-            int currentYear = 2022;
             string userInput = "";
             Overdue overdue = new Overdue();
 
@@ -24,7 +23,7 @@ namespace DetectionOverdue
                         overdue.ShowProducts();
                         break;
                     case "2":
-                        overdue.Detection(currentYear);
+                        overdue.Detection();
                         break;
                     case "3":
                         Console.WriteLine("Выход из программы.");
@@ -43,9 +42,11 @@ namespace DetectionOverdue
     class Overdue
     {
         private List<Stew> _stews = new List<Stew>();
+        private int _currentYear;
 
         public Overdue()
         {
+            _currentYear = 2022;
             _stews.Add(new Stew("Тушенка Каждый День", 2018, 5));
             _stews.Add(new Stew("Елинская Тушенка", 2020, 10));
             _stews.Add(new Stew("Говядина тушеная РУЗКОМ", 2010, 5));
@@ -58,9 +59,9 @@ namespace DetectionOverdue
             _stews.Add(new Stew("Елинская Тушенка", 2015, 10));
         }
 
-        public void Detection(int currentYear)
+        public void Detection()
         {
-            var overdueStews = _stews.Where(stew => (stew.Year + stew.ShelfLife) <= currentYear);
+            var overdueStews = _stews.Where(stew => (stew.Year + stew.ShelfLife) <= _currentYear);
             int counter = 1;
 
             foreach (var stew in overdueStews)
@@ -84,20 +85,20 @@ namespace DetectionOverdue
 
     class Stew
     {
-        public string Name { get; private set; }
+        private string _name;
         public int Year { get; private set; }
         public int ShelfLife { get; private set; }
 
         public Stew(string name, int year, int shelfLife)
         {
-            Name = name;
+            _name = name;
             Year = year;
             ShelfLife = shelfLife;
         }
 
         public void ShowInfo()
         {
-            Console.WriteLine($"Название: {Name} Год выпуска: {Year} Срок годности: {ShelfLife}");
+            Console.WriteLine($"Название: {_name} Год выпуска: {Year} Срок годности: {ShelfLife}");
         }
     }
 }

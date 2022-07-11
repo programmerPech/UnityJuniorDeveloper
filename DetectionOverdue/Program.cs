@@ -20,10 +20,10 @@ namespace DetectionOverdue
                 switch (userInput)
                 {
                     case "1":
-                        overdue.ShowProducts();
+                        overdue.ShowAllProducts();
                         break;
                     case "2":
-                        overdue.Detection();
+                        overdue.Detect();
                         break;
                     case "3":
                         Console.WriteLine("Выход из программы.");
@@ -59,23 +59,22 @@ namespace DetectionOverdue
             _stews.Add(new Stew("Елинская Тушенка", 2015, 10));
         }
 
-        public void Detection()
+        public void Detect()
         {
-            var overdueStews = _stews.Where(stew => (stew.Year + stew.ShelfLife) <= _currentYear);
-            int counter = 1;
-
-            foreach (var stew in overdueStews)
-            {
-                Console.Write((counter++)+". ");
-                stew.ShowInfo();
-            }
+            var overdueStews = _stews.Where(stew => (stew.Year + stew.ShelfLife) <= _currentYear).ToList();
+            Show(overdueStews);
         }
 
-        public void ShowProducts()
+        public void ShowAllProducts()
+        {
+            Show(_stews);
+        }
+
+        private void Show(List<Stew> stews)
         {
             int counter = 1;
 
-            foreach (var stew in _stews)
+            foreach (var stew in stews)
             {
                 Console.Write((counter++) + ". ");
                 stew.ShowInfo();
